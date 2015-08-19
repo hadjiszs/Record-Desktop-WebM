@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# chemin vers ffmpeg static
+cd /home/sdeb/Vidéos/ffmpeg-2.5.4-64bit-static/ 
+
+# xrectsel from https://github.com/lolilolicon/xrectsel
+# recupère les coordonnées de la région à enregistrer
+ARGUMENTS=$(/usr/local/xrectsel/xrectsel "-s %wx%h -i :0.0+%x,%y") || exit -1
+beep
+
+# encode capture lossless
+./ffmpeg -f x11grab -r 60 ${ARGUMENTS} -c:v huffyuv -threads 0 tmp.mkv
+
+# transcode capture
+./ffmpeg -y -i tmp.mkv -threads 0 -c:v libvpx -quality best -qmin 0 -qmax 0 tmp.webm
+
+# On récupère le nom que l'on veut donner à la vidéo (en évitant espace, accent, etc)
+echo "Saisir le nom de la vidéo: "
+read -r NOM
+
+mv tmp.webm ${NOM}.webm
+
+# upload sur le serveur (/Bureau/web/webm/ est monté over sshfs https://wiki.archlinux.org/index.php/Sshfs )
+# substituable avec un envoie par ftp ou scp
+mv ${NOM}.webm ~/Bureau/web/webm/
+
+# url vers la vidéo -> dans presse papier
+printf "http://webm.hadjiszs.fr/%s.webm" ${NOM} | xclip -i
+
+rm /tmp/frame*
