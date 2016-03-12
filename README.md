@@ -6,9 +6,11 @@ Script pour prendre en vidéo son écran avec du WebM en sortie et upload vers s
 Besoin
 ------
 
-- `xrectsel`
-    - https://github.com/lolilolicon/xrectsel
+`xrectsel`
 
-- `ffmpeg`
-    - dépôt: paquet ffmpeg
-    - static build: http://johnvansickle.com/ffmpeg/
+- https://github.com/lolilolicon/xrectsel
+
+`ffmpeg`
+
+- dépôt: paquet ffmpeg
+- static build: http://johnvansickle.com/ffmpeg/
