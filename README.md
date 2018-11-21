@@ -1,16 +1,10 @@
 Record_desktop
 =============
 
-Script pour prendre en vidéo son écran avec du WebM en sortie et upload vers son serveur en récupérant le lien en presse-papier, un "puush video" en quelques sortes
+Script to take screen video and upload it to your server, some kind of "puush" for webm
 
-Besoin
-------
+Dependencies
+------------
 
-`xrectsel`
-
-- https://github.com/lolilolicon/xrectsel
-
-`ffmpeg`
-
-- dépôt: paquet ffmpeg
-- static build: http://johnvansickle.com/ffmpeg/
+- `xrectsel` https://github.com/lolilolicon/xrectsel
+- `ffmpeg` static build: http://johnvansickle.com/ffmpeg/
